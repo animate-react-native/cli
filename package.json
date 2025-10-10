@@ -1,0 +1,35 @@
+{
+  "name": "@animatereactnative/cli",
+  "description": "AnimateReactNative.com CLI",
+  "keywords": [],
+  "author": "Catalin Miron <mironcatalin@gmail.com> (https://www.animatereactnative.com/)",
+  "license": "MIT",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "ui": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "bun run src/index.ts"
+  },
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "chalk-extra": "^0.1.2",
+    "cli-table3": "^0.6.5",
+    "commander": "^14.0.1",
+    "crypto": "^1.0.1",
+    "dotenv": "^17.2.3",
+    "node-fetch": "^3.3.2",
+    "open": "^10.0.0",
+    "prompts": "^2.4.2",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "@types/prompts": "^2.4.9",
+    "@types/qrcode-terminal": "^0.12.2",
+    "typescript": "^5.6.3"
+  }
+}
