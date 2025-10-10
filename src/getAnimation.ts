@@ -16,6 +16,7 @@ export const getAnimationCommand = new Command()
       process.exit(1);
     }
     const token = config.token;
+    console.log(token);
     try {
       const res = await fetch(`${env.appUrl}/api/cli/code?slug=${slug}`, {
         headers: { Authorization: `Bearer ${token}` },

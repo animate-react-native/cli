@@ -12,7 +12,6 @@ export const listCommand = new Command()
     .option("--search <query>", "Search by name or description")
     .option("--refresh", "Force refresh from remote instead of cache")
     .action(async (options) => {
-    const baseUrl = env.appUrl;
     const spinner = ora("Fetching available components...").start();
     try {
         let components;
@@ -32,7 +31,7 @@ export const listCommand = new Command()
         // Fetch fresh data if no valid cache
         if (!components) {
             const auth = loadAuthConfig();
-            const res = await fetch(`${baseUrl}/api/cli/list`, {
+            const res = await fetch(`${env.appUrl}/api/cli/list`, {
                 headers: {
                     "Content-Type": "application/json",
                     ...(auth?.token && { Authorization: `Bearer ${auth.token}` }),

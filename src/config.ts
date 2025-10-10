@@ -1,5 +1,3 @@
-import "dotenv/config";
-
 import chalk from "chalk";
 import crypto from "crypto";
 import fs from "fs";
@@ -7,8 +5,9 @@ import os from "os";
 import path from "path";
 import prompts from "prompts";
 
+console.log("process.env.APP_URL: ", process.env.APP_URL);
 export const env = {
-  appUrl: process.env.APP_URL || "http://localhost:3000",
+  appUrl: process.env.APP_URL || "https://www.animatereactnative.com",
 };
 
 const ROOT = path.join(os.homedir(), ".animatereactnative");
