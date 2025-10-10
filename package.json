@@ -5,9 +5,11 @@
   "author": "Catalin Miron <mironcatalin@gmail.com> (https://www.animatereactnative.com/)",
   "license": "MIT",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
-  "bin": "dist/index.js",
+  "bin": {
+    "@animatereactnative/cli": "dist/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "bun run src/index.ts"
