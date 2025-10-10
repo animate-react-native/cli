@@ -5,10 +5,10 @@
   "author": "Catalin Miron <mironcatalin@gmail.com> (https://www.animatereactnative.com/)",
   "license": "MIT",
   "type": "module",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "src/index.js",
   "bin": {
-    "cli": "dist/index.js"
+    "animatereactnative": "dist/index.js"
   },
   "publishConfig": {
     "access": "public"
