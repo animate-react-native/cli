@@ -1,22 +1,38 @@
 {
   "name": "@animatereactnative/cli",
   "description": "AnimateReactNative.com CLI",
-  "keywords": [],
   "author": "Catalin Miron <mironcatalin@gmail.com> (https://www.animatereactnative.com/)",
   "license": "MIT",
   "type": "module",
   "version": "0.0.9",
   "main": "src/index.js",
-  "bin": {
-    "animatereactnative": "dist/index.js",
-    "@animatereactnative/cli": "dist/index.js"
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
   },
+  "bin": "./dist/index.js",
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "components",
+    "ui",
+    "react-native",
+    "animations",
+    "react-native-reanimated",
+    "animate-react-native"
+  ],
   "scripts": {
-    "build": "tsc",
-    "dev": "bun run src/index.ts"
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "clean": "rimraf dist",
+    "cli": "bun run src/index.ts",
+    "pub:release": "bun build && bun publish --access public"
   },
   "dependencies": {
     "chalk": "^5.0.0",
@@ -34,6 +50,8 @@
     "@types/node": "^22.5.0",
     "@types/prompts": "^2.4.9",
     "@types/qrcode-terminal": "^0.12.2",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.5.0",
     "typescript": "^5.6.3"
   },
   "repository": {

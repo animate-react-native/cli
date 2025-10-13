@@ -4,7 +4,12 @@ import { Command } from "commander";
 import fs from "fs";
 import fetch from "node-fetch";
 import path from "path";
-import { createComponentDir, env, loadAuthConfig } from "./config.js";
+import {
+  createComponentDir,
+  createInitialConfig,
+  env,
+  loadAuthConfig,
+} from "./config.js";
 
 export const getAnimationCommand = new Command()
   .name("get")
@@ -34,6 +39,7 @@ export const getAnimationCommand = new Command()
         symbol: "🛠",
         text: " Getting the animation",
       });
+      await createInitialConfig();
       // console.log(chalk.green(`✅ Component`));
       const componentPath = await createComponentDir(slug);
       spinner.stopAndPersist({
