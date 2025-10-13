@@ -3,15 +3,7 @@
   "description": "AnimateReactNative.com CLI",
   "author": "Catalin Miron <mironcatalin@gmail.com> (https://www.animatereactnative.com/)",
   "license": "MIT",
-  "type": "module",
-  "version": "0.0.9",
-  "main": "src/index.js",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    }
-  },
+  "version": "0.0.14",
   "bin": "./dist/index.js",
   "publishConfig": {
     "access": "public"
@@ -27,12 +19,19 @@
     "react-native-reanimated",
     "animate-react-native"
   ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
     "clean": "rimraf dist",
     "cli": "bun run src/index.ts",
-    "pub:release": "bun build && bun publish --access public"
+    "pub": "bun run build && bun publish --access public"
   },
   "dependencies": {
     "chalk": "^5.0.0",

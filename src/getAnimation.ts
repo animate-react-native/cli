@@ -12,8 +12,8 @@ import {
 } from "./config.js";
 
 export const getAnimationCommand = new Command()
-  .name("get")
-  .description("Get a new animation")
+  .name("add")
+  .description("Add a new animation from AnimateReactNative.com")
   .argument("<slug>", "Animation slug")
   .action(async (slug) => {
     const config = loadAuthConfig();
