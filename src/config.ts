@@ -80,7 +80,7 @@ export function saveAuthConfig(config: { token: string }) {
   }
 }
 
-export function loadAuthConfig(): AuthConfig {
+export async function loadAuthConfig(): Promise<AuthConfig | null> {
   try {
     const raw = fs.readFileSync(AUTH_PATH, "utf-8");
     const parsed = JSON.parse(raw);
@@ -98,7 +98,7 @@ export function loadAuthConfig(): AuthConfig {
     return rest;
   } catch (e) {
     console.error(chalk.red("❌ Not authenticated. Please run `login` first."));
-    process.exit(0);
+    return null;
   }
 }
 

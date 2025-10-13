@@ -4,22 +4,39 @@ import { Command } from "commander";
 import fs from "fs";
 import fetch from "node-fetch";
 import path from "path";
+import prompts from "prompts";
 import {
   createComponentDir,
   createInitialConfig,
   env,
   loadAuthConfig,
 } from "./config.js";
+import { handleLogin } from "./helpers.js";
 
 export const getAnimationCommand = new Command()
   .name("add")
   .description("Add a new animation from AnimateReactNative.com")
   .argument("<slug>", "Animation slug")
   .action(async (slug) => {
-    const config = loadAuthConfig();
+    let config = await loadAuthConfig();
     if (!config) {
-      process.exit(1);
+      const { login } = await prompts({
+        type: "confirm",
+        name: "login",
+        message: "Do you want to login now?",
+        initial: true,
+      });
+      if (!login) {
+        console.log(chalk.red("❌ Ups, you need to be logged in!"));
+        return;
+      } else {
+        await handleLogin();
+      }
     }
+
+    config = await loadAuthConfig();
+    // // console.log(l.login);
+    // return;
     const token = config.token;
     try {
       const res = await fetch(`${env.appUrl}/api/cli/code?slug=${slug}`, {
