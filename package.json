@@ -3,7 +3,7 @@
   "description": "AnimateReactNative.com CLI",
   "author": "Catalin Miron <mironcatalin@gmail.com> (https://www.animatereactnative.com/)",
   "license": "MIT",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "bin": "./dist/index.js",
   "publishConfig": {
     "access": "public"
