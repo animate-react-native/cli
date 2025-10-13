@@ -3,7 +3,8 @@ import chalkExtra from "chalk-extra";
 import crypto from "crypto";
 import fetch from "node-fetch";
 import open from "open";
-import { env, saveAuthConfig } from "./config.js";
+import prompts from "prompts";
+import { env, loadAuthConfig, saveAuthConfig } from "./config.js";
 
 export const handleLogin = async () => {
   const code = crypto.randomBytes(8).toString("hex");
@@ -46,4 +47,24 @@ export const handleLogin = async () => {
   console.log(
     chalk.blue(`Welcome to AnimateReactNative CLI${name ? `, ${name}` : ""}!`)
   );
+};
+
+export const getAuthConfigWithPrompts = async () => {
+  let config = await loadAuthConfig();
+  if (!config) {
+    const { login } = await prompts({
+      type: "confirm",
+      name: "login",
+      message: "Do you want to login now?",
+      initial: true,
+    });
+    if (!login) {
+      console.log(chalk.red("❌ Ups, you need to be logged in!"));
+      return;
+    } else {
+      await handleLogin();
+    }
+  }
+
+  return await loadAuthConfig();
 };

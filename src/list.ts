@@ -1,16 +1,12 @@
 import chalk from "chalk";
 import Table from "cli-table3";
 import { Command } from "commander";
+import console from "console";
 import fetch from "node-fetch";
 import ora from "ora";
 import process from "process";
-import {
-  env,
-  isCacheExpired,
-  loadAuthConfig,
-  loadCache,
-  saveCache,
-} from "./config.js";
+import { env, isCacheExpired, loadCache, saveCache } from "./config.js";
+import { getAuthConfigWithPrompts } from "./helpers.js";
 
 // ---- CLI Command ----
 
@@ -41,7 +37,14 @@ export const listCommand = new Command()
 
       // Fetch fresh data if no valid cache
       if (!components) {
-        const auth = loadAuthConfig();
+        spinner.stopAndPersist();
+        const auth = await getAuthConfigWithPrompts();
+        if (!auth) {
+          // console.log(chalk.red("❌ Ups, you need to be logged in!"));
+          return;
+        }
+        spinner.start();
+
         const res = await fetch(`${env.appUrl}/api/cli/list`, {
           headers: {
             "Content-Type": "application/json",
