@@ -19,9 +19,12 @@ export const getAnimationCommand = new Command()
     }
     const token = config.token;
     try {
-      const res = await fetch(`${env.appUrl}/api/cli/code?slug=${slug}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        `${env.appUrl}/api/cli/code?slug=${encodeURIComponent(slug)}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       const data = (await res.json()) as
         | { status: "success"; files: { filename: string; content: string }[] }
