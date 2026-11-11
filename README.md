@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/animate-react-native/cli/main/docs/banner-dark.png">
-  <img alt="@animatereactnative/cli: add any AnimateReactNative animation to your project with one command, or sync the whole library to your machine" src="https://raw.githubusercontent.com/animate-react-native/cli/main/docs/banner.png">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/animate-react-native/cli/main/docs/banner-dark.png?v=2">
+  <img alt="@animatereactnative/cli: add any AnimateReactNative animation to your project with one command, or sync the whole library to your machine" src="https://raw.githubusercontent.com/animate-react-native/cli/main/docs/banner.png?v=2">
 </picture>
 
 # @animatereactnative/cli
