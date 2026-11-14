@@ -21,7 +21,7 @@ Nothing to install. It needs Node 18 or newer.
 | Command | What it does |
 | --- | --- |
 | `login` | Signs this machine in. It opens the site in your browser; you confirm there. |
-| `add <slug>` | Writes one animation's source files into your project. |
+| `add <slug>` | Writes one animation's source files into your project and installs the packages it needs. `--no-install` only prints the command. |
 | `list` | Lists every animation with its slug. `--search <text>` filters, `--refresh` skips the local cache. |
 | `sync` | Copies the whole library to this machine, or pulls what changed since last time. |
 | `preview <slug>` | Prints a code to scan with the free preview app, to try the animation on your phone. |
@@ -35,7 +35,7 @@ npx @animatereactnative/cli add shimmer-text
 
 It asks where to save (`src/components` by default) and writes the files to `<that folder>/<slug>/`. They are plain source files: no package to depend on, every line open to change.
 
-The slug is the last part of an animation's address on the site, and `list` prints them all. Each animation's page lists the packages it needs, with the install command.
+The slug is the last part of an animation's address on the site, and `list` prints them all. `add` installs what the animation imports and your project is missing: with `npx expo install` in an Expo project, otherwise with your own package manager. Each animation's page lists the same packages, with the install command.
 
 ## Sync the whole library
 
